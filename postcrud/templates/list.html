@@ -1,6 +1,44 @@
-<h1>글 목록</h1>
-<a href="{% url 'postcreate' %}">새 글 작성</a>
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
-{% for post in posts %}
-    <h3><a href="{% url 'postshow' post.id %}">{{post.title}}</a></h3>
-{% endfor %}
+
+<html>
+    <head>
+        <title>Blog</title>
+        <style>
+            h1 {
+                text-align: center;
+                font-weight: bold;
+            }
+            .postlist{
+                color:black;
+                text-align: center;
+            }
+
+            .postlist a:link{
+                color:black;
+            }
+
+            .postlist a:visited{
+                color:purple;
+            }
+
+            
+        </style>
+    </head>
+
+    <body>
+        <h1>글 목록</h1>
+        <a type="button" class="btn btn-info" href="{% url 'postcreate' %}">새 글 쓰기</a>
+
+        <div class="postlist">
+            <hr>
+            {% for post in posts %}
+                <h3><a href="{% url 'postshow' post.id %}">{{post.title}}</a></h3>
+                <br>
+            {% endfor %}
+            <hr>
+        </div>
+    </body>
+</html>
